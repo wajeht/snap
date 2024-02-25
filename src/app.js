@@ -8,6 +8,7 @@ import { rateLimitter } from './config/rate-limiter.config.js';
 import { postSnap } from './api/snap/snap.conroller.js';
 import { catchAsyncErrors } from './api/api.middleware.js';
 import { NotFoundError } from './app.error.js';
+import { app as appConfig } from './config/app.config.js';
 
 const app = express();
 
@@ -28,7 +29,8 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
 	const statusCode = err.statusCode ?? 500;
-	return res.status(statusCode).json({ message: err.message });
+	const message = appConfig.env !== 'production' ? err.stack : err.message;
+	return res.status(statusCode).json({ message });
 });
 
 export { app };
