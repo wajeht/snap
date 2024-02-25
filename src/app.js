@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
 	const statusCode = err.statusCode ?? 500;
-	return nes.status(statusCode).json({ message: err.message });
+	return res.status(statusCode).json({ message: err.message });
 });
 
 export { app };
