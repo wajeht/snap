@@ -14,6 +14,7 @@ export async function postSnap(req, res) {
 			throw new ValidationError('invalid url');
 		}
 
+		// use job queue
 		const captured = await screenshot({
 			url: addHttpsIfNeeded(url),
 			quality,
