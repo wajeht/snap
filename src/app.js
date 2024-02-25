@@ -4,9 +4,11 @@ import compression from 'compression';
 import helmet from 'helmet';
 
 import { api } from './api/api.js';
+import { rateLimitter } from './config/rate-limit.config.js';
 
 const app = express();
 
+app.use(rateLimitter);
 app.use(cors());
 app.use(helmet());
 app.use(compression());
