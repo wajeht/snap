@@ -1,4 +1,13 @@
 import { rateLimit as rl } from 'express-rate-limit';
+import { app as appConfig } from '../config/app.config.js';
+import { getIPAddress } from '../utils/utils.js';
+
+async function skipOnMyIp(_req, _res) {
+	if ((await getIPAddress()) === appConfig.myIp) {
+		console.log(`my ip was connected: ${await getIPAddress()}`);
+	}
+	return (await getIPAddress()) === appConfig.myIp;
+}
 
 export const rateLimitter = rl({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -6,6 +15,7 @@ export const rateLimitter = rl({
 	standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
 	// store: ... , // Use an external store for consistency across multiple server instances.
+	skip: skipOnMyIp,
 	message: (req, res) => {
 		return res.json({
 			message: 'Too many requests, please try again later?',

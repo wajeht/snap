@@ -1,5 +1,16 @@
 import { app as appConfig } from '../config/app.config.js';
 
+export async function getIPAddress() {
+	try {
+		const response = await fetch('https://checkip.amazonaws.com');
+		const data = await response.text();
+		return data.trim();
+	} catch (error) {
+		console.error('Error fetching IP address:', error);
+		throw error;
+	}
+}
+
 // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 export function isValidURL(str) {
 	var pattern = new RegExp(
