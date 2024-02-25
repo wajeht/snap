@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
 import helmet from 'helmet';
-import path from "path";
+import path from 'path';
 
 import { api } from './api/api.js';
 import { rateLimitter } from './config/rate-limiter.config.js';

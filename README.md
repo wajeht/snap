@@ -1,4 +1,5 @@
 # 📸 snap
+
 swiftly snap any web
 
 > [!WARNING]

@@ -5,7 +5,7 @@ export async function postSnap(req, res) {
 	const url = req.query.url;
 
 	if (url === undefined) {
-		throw new ValidationError(`Please call via ${domain}/?url=<domain>`)
+		throw new ValidationError(`Please call via ${domain}/?url=<domain>`);
 	}
 
 	if (!isValidURL(url)) {
