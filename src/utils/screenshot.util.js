@@ -37,6 +37,10 @@ export async function screenshot({ url, quality = 80, size = 800 }) {
 			.jpeg({ quality: parseInt(quality) })
 			.toFile(PATH);
 
+		// add a expires at
+		// create a job
+		// manaully delete them
+
 		return {
 			path: `/img/${FILE_NAME}`,
 			fileName: FILE_NAME,
