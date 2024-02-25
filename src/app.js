@@ -2,8 +2,11 @@ import express from 'express';
 
 const app = express();
 
-app.get('/health/z', function (req, res) {
-	return res.json({
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/healthz', (req, res) => {
+	res.status(200).json({
 		message: 'ok',
 		uptime: process.uptime(),
 	});
