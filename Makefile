@@ -1,7 +1,7 @@
 commit:
-	npm run lint
-	npm run format
 	npm run test
+	npm run format
+	npm run lint
 	git add -A
-	aicommits --type conventional
+	./commit.sh
 	git push --no-verify
