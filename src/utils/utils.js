@@ -21,5 +21,5 @@ export function addHttpsIfNeeded(domain) {
 	return domain;
 }
 
-export const domain =
-	appConfig.env !== 'production' ? `http://localhost:${appConfig.port}` : `${appConfig.domain}`;
+// prettier-ignore
+export const domain = appConfig.env !== 'production' ? `http://localhost:${appConfig.port}` : `${appConfig.domain}`;
