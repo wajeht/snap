@@ -1,3 +1,5 @@
+import { app as appConfig } from '../config/app.config.js';
+
 // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 export function isValidURL(str) {
   var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
@@ -8,3 +10,5 @@ export function isValidURL(str) {
     '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
   return !!pattern.test(str);
 }
+
+export const domain = appConfig.env !== 'production' ? `http://localhost:${appConfig.port}/url=<domain>` : `${appConfig.domain}/url=<domain>`;

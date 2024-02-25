@@ -1,8 +1,12 @@
 import { ValidationError } from '../../app.error.js';
-import { isValidURL } from '../../utils/utils.js';
+import { domain, isValidURL } from '../../utils/utils.js';
 
 export async function postSnap(req, res) {
 	const url = req.query.url;
+
+	if (url === undefined) {
+		throw new ValidationError(`Please call via ${domain}`)
+	}
 
 	if (!isValidURL(url)) {
 		throw new ValidationError('invalid url');
