@@ -1,4 +1,12 @@
+import { isValidURL } from '../../utils/utils.js';
+
 export async function postSnap(req, res) {
+	const url = req.query.url;
+
+	if (!isValidURL(url)) {
+		throw new Error('invalid url');
+	}
+
 	return res.status(200).json({
 		message: 'postSnap()',
 	});
