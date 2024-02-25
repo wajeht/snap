@@ -38,6 +38,9 @@ $ npm run test
 
 # 📖 Documentation
 
+> [!WARNING]
+> This project documentation is unfinished and heavily work in progress.
+
 ### Endpoint: /
 
 Capture a screenshot of a web page by specifying its URL.
