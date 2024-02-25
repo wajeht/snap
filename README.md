@@ -73,7 +73,3 @@ A `307 Temporary Redirect` to the path where the captured screenshot is stored.
 # 📜 License
 
 Distributed under the MIT License © wajeht. See [LICENSE](./LICENSE) for more information.
-
-```
-
-```
