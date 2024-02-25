@@ -11,6 +11,7 @@
 		"test": "vitest"
 	},
 	"keywords": [
+		"screenshot",
 		"capture",
 		"website",
 		"snap"
