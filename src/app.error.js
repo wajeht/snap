@@ -19,3 +19,7 @@ export function NotFoundError(message = 'Not Found') {
 export function ValidationError(message = 'Validation Error') {
 	return HttpError(422, message);
 }
+
+export function UnimplementedFunctionError(message = 'Function Not Implemented') {
+	return HttpError(501, message);
+}

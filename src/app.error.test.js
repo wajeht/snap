@@ -1,5 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { ForbiddenError, UnauthorizedError, NotFoundError, ValidationError } from './app.error.js';
+import {
+	ForbiddenError,
+	UnauthorizedError,
+	NotFoundError,
+	ValidationError,
+	UnimplementedFunctionError,
+} from './app.error.js';
 
 describe('Custom Http Errors', () => {
 	it('ForbiddenError should have status code 403 and default message', () => {
@@ -51,6 +57,19 @@ describe('Custom Http Errors', () => {
 		const customMessage = 'Custom Validation Message';
 		const error = new ValidationError(customMessage);
 		expect(error.statusCode).toBe(422);
+		expect(error.message).toBe(customMessage);
+	});
+
+	it('UnimplementedFunctionError should have status code 501 and default message', () => {
+		const error = UnimplementedFunctionError();
+		expect(error.statusCode).toBe(501);
+		expect(error.message).toBe('Function Not Implemented');
+	});
+
+	it('UnimplementedFunctionError should allow custom message', () => {
+		const customMessage = 'Custom Not Implemented Message';
+		const error = UnimplementedFunctionError(customMessage);
+		expect(error.statusCode).toBe(501);
 		expect(error.message).toBe(customMessage);
 	});
 });

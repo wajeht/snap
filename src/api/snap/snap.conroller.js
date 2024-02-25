@@ -1,4 +1,4 @@
-import { ValidationError } from '../../app.error.js';
+import { ValidationError, UnimplementedFunctionError } from '../../app.error.js';
 import { domain, isValidURL } from '../../utils/utils.js';
 
 export async function postSnap(req, res) {
@@ -17,29 +17,18 @@ export async function postSnap(req, res) {
 	});
 }
 
-export async function getSnap(req, res) {
-	return res.status(200).json({
-		id: req.params.id,
-		message: 'getSnap()',
-	});
+export async function getSnap(_req, _res) {
+	throw new UnimplementedFunctionError();
 }
 
-export async function getAllSnap(req, res) {
-	return res.status(200).json({
-		message: 'getAllSnap()',
-	});
+export async function getAllSnap(_req, _res) {
+	throw new UnimplementedFunctionError();
 }
 
-export async function patchSnap(req, res) {
-	return res.status(200).json({
-		id: req.params.id,
-		message: 'patchSnap()',
-	});
+export async function patchSnap(_req, _res) {
+	throw new UnimplementedFunctionError();
 }
 
-export async function deleteSnap(req, res) {
-	return res.status(200).json({
-		id: req.params.id,
-		message: 'deleteSnap()',
-	});
+export async function deleteSnap(_req, _res) {
+	throw new UnimplementedFunctionError();
 }
