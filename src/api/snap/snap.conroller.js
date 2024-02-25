@@ -1,9 +1,9 @@
 import { ValidationError, UnimplementedFunctionError } from '../../app.error.js';
-import { domain, isValidURL } from '../../utils/utils.js';
+import { domain, isValidURL, addHttpsIfNeeded } from '../../utils/utils.js';
 import { screenshot } from '../../utils/screenshot.util.js';
 
 export async function postSnap(req, res) {
-	const url = req.query.url;
+	let url = req.query.url;
 
 	if (url === undefined) {
 		throw new ValidationError(`Please call via ${domain}/?url=<domain>`);
@@ -12,6 +12,8 @@ export async function postSnap(req, res) {
 	if (!isValidURL(url)) {
 		throw new ValidationError('invalid url');
 	}
+
+	url = addHttpsIfNeeded(url);
 
 	const captured = await screenshot(url);
 

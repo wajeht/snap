@@ -14,5 +14,12 @@ export function isValidURL(str) {
 	return !!pattern.test(str);
 }
 
+export function addHttpsIfNeeded(domain) {
+	if (!domain.startsWith('https://')) {
+		return 'https://' + domain;
+	}
+	return domain;
+}
+
 export const domain =
 	appConfig.env !== 'production' ? `http://localhost:${appConfig.port}` : `${appConfig.domain}`;
