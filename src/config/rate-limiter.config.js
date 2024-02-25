@@ -3,9 +3,10 @@ import { app as appConfig } from '../config/app.config.js';
 import { getIPAddress } from '../utils/utils.js';
 
 async function skipOnMyIp(req, _res) {
+	const myIp = await getIPAddress();
 	console.log(req.ip);
-	const myIpWasConnected = (await getIPAddress()) === appConfig.myIp;
-	if (myIpWasConnected) console.log(`my ip was connected: ${await getIPAddress()}`);
+	const myIpWasConnected = myIp === appConfig.myIp;
+	if (myIpWasConnected) console.log(`my ip was connected: ${myIp}`);
 	return myIpWasConnected;
 }
 
