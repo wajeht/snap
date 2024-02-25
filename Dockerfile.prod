@@ -38,9 +38,7 @@ RUN npm install
 
 COPY ./ .
 
-RUN npm run build
-
-EXPOSE 808
+EXPOSE 8080
 
 HEALTHCHECK CMD curl -f http://localhost:8080/healthz || exit 1
 
