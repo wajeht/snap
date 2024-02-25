@@ -1,9 +1,11 @@
-export const s3 = {
-  region: 'eu-east-1',
+import './setup-dotenv.js';
+
+export const s3Config = {
+  region: process.env.S3_REGION,
   credentials: {
-    accessKeyId: '5wQKcegykSIdpz9gW1aT',
-    secretAccessKey: 'fPi3ovFlXt8QexlrEgp3QfREGu75awQgtReknRa8'
+    accessKeyId: process.env.S3_CREDENTIALS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.S3_CREDENTIALS_SECRET_ACCESS_KEY
   },
-  endpoint: 'https://minio-api.jaw.dev',
-  forcePathStyle: true
+  endpoint: process.env.S3_ENDPOINT,
+  forcePathStyle: process.env.S3_FORCE_PATH_STYLE
 };
