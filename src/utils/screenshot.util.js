@@ -21,7 +21,7 @@ async function getBrowser() {
 	}
 }
 
-export async function screenshot(url) {
+export async function screenshot({ url, quality = 80, size = 800 }) {
 	try {
 		const FILE_NAME = crypto.randomBytes(8).toString('hex') + '.png';
 		const PATH = path.resolve(path.join(process.cwd(), 'public', 'img', FILE_NAME));
@@ -32,7 +32,7 @@ export async function screenshot(url) {
 		const screenshotBuffer = await page.screenshot();
 		await page.close();
 
-		await sharp(screenshotBuffer).resize(800).jpeg({ quality: 80 }).toFile(PATH);
+		await sharp(screenshotBuffer).resize(size).jpeg({ quality }).toFile(PATH);
 
 		return {
 			path: `/img/${FILE_NAME}`,

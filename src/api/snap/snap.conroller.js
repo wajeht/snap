@@ -3,7 +3,7 @@ import { domain, isValidURL, addHttpsIfNeeded } from '../../utils/utils.js';
 import { screenshot } from '../../utils/screenshot.util.js';
 
 export async function postSnap(req, res) {
-	let url = req.query.url;
+	const { url, size, quality } = req.query;
 
 	if (url === undefined) {
 		throw new ValidationError(`Please call via ${domain}/?url=<domain>`);
@@ -13,9 +13,11 @@ export async function postSnap(req, res) {
 		throw new ValidationError('invalid url');
 	}
 
-	url = addHttpsIfNeeded(url);
-
-	const captured = await screenshot(url);
+	const captured = await screenshot({
+		url: addHttpsIfNeeded(url),
+		quality,
+		size,
+	});
 
 	return res.status(200).json({
 		message: 'ok',
