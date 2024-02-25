@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import { api } from './api/api.js';
 import { rateLimitter } from './config/rate-limiter.config.js';
 import { postSnap } from './api/snap/snap.conroller.js';
-import { catchAsyncErrors } from './api/api.middleware.js';
+import { catchAsyncErrors } from './app.middleware.js';
 import { NotFoundError } from './app.error.js';
 import { app as appConfig } from './config/app.config.js';
 

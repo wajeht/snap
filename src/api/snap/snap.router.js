@@ -2,7 +2,7 @@ import express from 'express';
 const snap = express.Router();
 
 import { getSnap, getAllSnap, postSnap, deleteSnap, patchSnap } from './snap.conroller.js';
-import { catchAsyncErrors } from '../api.middleware.js'
+import { catchAsyncErrors } from '../../app.middleware.js'
 
 snap.post('/', catchAsyncErrors(postSnap));
 snap.get('/', catchAsyncErrors(getAllSnap));
