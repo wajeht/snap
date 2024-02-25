@@ -32,7 +32,10 @@ export async function screenshot({ url, quality = 80, size = 800 }) {
 		const screenshotBuffer = await page.screenshot();
 		await page.close();
 
-		await sharp(screenshotBuffer).resize(size).jpeg({ quality }).toFile(PATH);
+		await sharp(screenshotBuffer)
+			.resize(parseInt(size))
+			.jpeg({ quality: parseInt(quality) })
+			.toFile(PATH);
 
 		return {
 			path: `/img/${FILE_NAME}`,
