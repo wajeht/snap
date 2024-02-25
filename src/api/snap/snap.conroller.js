@@ -13,10 +13,11 @@ export async function postSnap(req, res) {
 		throw new ValidationError('invalid url');
 	}
 
-	const img = await screenshot(url);
+	const captured = await screenshot(url);
 
 	return res.status(200).json({
-		message: img,
+		message: 'ok',
+		data: captured,
 	});
 }
 

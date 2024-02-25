@@ -34,7 +34,10 @@ export async function screenshot(url) {
 
 		await sharp(screenshotBuffer).resize(800).jpeg({ quality: 80 }).toFile(PATH);
 
-		return PATH;
+		return {
+			path: `/img/${FILE_NAME}`,
+			fileName: FILE_NAME,
+		};
 	} catch (error) {
 		console.error('Error occurred while capturing screenshot: ', error);
 		throw error;
