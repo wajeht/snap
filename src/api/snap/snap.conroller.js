@@ -3,6 +3,7 @@ import { domain, isValidURL, addHttpsIfNeeded } from '../../utils/utils.js';
 import { screenshot } from '../../utils/screenshot.util.js';
 
 export async function postSnap(req, res) {
+	// called via `http://localhost:${PORT}/`
 	if (req.originalUrl === '/') {
 		const { url, size, quality } = req.query;
 		if (url === undefined) {
