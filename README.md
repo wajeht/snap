@@ -38,8 +38,39 @@ $ npm run test
 
 # 📖 Documentation
 
-todo
+### Endpoint: /
+
+Capture a screenshot of a web page by specifying its URL.
+
+### Method: `GET`
+
+#### Query Parameters:
+
+- `url`: `Required`. The web page URL to capture.
+- `size`: `Optional`. Specify the screenshot size (e.g., "1024x768").
+- `quality`: `Optional`. Specify the screenshot quality.
+
+#### Example Request:
+
+```bash
+$ curl http://localhost:PORT/?url=https://example.com
+```
+
+Replace `PORT` with the port number on which the server is running.
+
+### Response:
+
+A `307 Temporary Redirect` to the path where the captured screenshot is stored.
+
+### Errors:
+
+- Missing `url` parameter: Returns an error message indicating that the `url` parameter is required.
+- Invalid `url`: Returns an error message indicating the URL is invalid.
 
 # 📜 License
 
 Distributed under the MIT License © wajeht. See [LICENSE](./LICENSE) for more information.
+
+```
+
+```
