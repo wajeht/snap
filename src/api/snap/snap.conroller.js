@@ -4,7 +4,7 @@ import { screenshot } from '../../utils/screenshot.util.js';
 
 export async function postSnap(req, res) {
 	// called via `http://localhost:${PORT}/`
-	if (req.originalUrl === '/') {
+	if (req.originalUrl !== '/') {
 		const { url, size, quality } = req.query;
 		if (url === undefined) {
 			throw new ValidationError(`Please call via ${domain}/?url=<domain>`);
