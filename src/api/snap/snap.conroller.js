@@ -1,5 +1,6 @@
 import { ValidationError, UnimplementedFunctionError } from '../../app.error.js';
 import { domain, isValidURL } from '../../utils/utils.js';
+import { screenshot } from '../../utils/screenshot.util.js';
 
 export async function postSnap(req, res) {
 	const url = req.query.url;
@@ -12,8 +13,10 @@ export async function postSnap(req, res) {
 		throw new ValidationError('invalid url');
 	}
 
+	const img = await screenshot(url);
+
 	return res.status(200).json({
-		message: url,
+		message: img,
 	});
 }
 
