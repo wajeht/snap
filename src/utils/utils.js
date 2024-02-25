@@ -11,4 +11,4 @@ export function isValidURL(str) {
   return !!pattern.test(str);
 }
 
-export const domain = appConfig.env !== 'production' ? `http://localhost:${appConfig.port}/url=<domain>` : `${appConfig.domain}/url=<domain>`;
+export const domain = appConfig.env !== 'production' ? `http://localhost:${appConfig.port}` : `${appConfig.domain}`;
