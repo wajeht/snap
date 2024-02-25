@@ -7,8 +7,7 @@ import { api } from './api/api.js';
 import { rateLimitter } from './config/rate-limiter.config.js';
 import { postSnap } from './api/snap/snap.conroller.js';
 import { catchAsyncErrors } from './app.middleware.js';
-import { NotFoundError } from './app.error.js';
-import { app as appConfig } from './config/app.config.js';
+import { notFoundHandler, errorHandler, healthCheckHandler } from './app.controller.js';
 
 const app = express();
 
@@ -21,16 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', catchAsyncErrors(postSnap));
 app.use('/api', api);
-app.get('/healthz', (req, res) => res.status(200).json({ message: 'ok' }));
+app.get('/healthz', healthCheckHandler);
 
-app.use((req, res, next) => {
-	throw new NotFoundError();
-});
-
-app.use((err, req, res, next) => {
-	const statusCode = err.statusCode ?? 500;
-	const message = appConfig.env !== 'production' ? err.stack : err.message;
-	return res.status(statusCode).json({ message });
-});
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 export { app };
