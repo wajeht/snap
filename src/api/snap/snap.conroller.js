@@ -19,10 +19,12 @@ export async function postSnap(req, res) {
 		size,
 	});
 
-	return res.status(200).json({
-		message: 'ok',
-		data: captured,
-	});
+	return res.status(307).redirect(captured.path);
+
+	// return res.status(200).json({
+	// 	message: 'ok',
+	// 	data: captured,
+	// });
 }
 
 export async function getSnap(_req, _res) {
