@@ -1,3 +1,4 @@
+import path from 'path';
 import { ValidationError, UnimplementedFunctionError } from '../../app.error.js';
 import { domain, isValidURL, addHttpsIfNeeded } from '../../utils/utils.js';
 import { screenshot } from '../../utils/screenshot.util.js';
@@ -23,7 +24,8 @@ export async function postSnap(req, res) {
 
 		// test this
 		if (download === 'true') {
-			return res.download(captured.path);
+			const image = path.resolve(path.join(process.cwd(), 'public', captured.path));
+			return res.download(image);
 		}
 
 		return res.status(307).redirect(captured.path);
