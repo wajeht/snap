@@ -5,7 +5,7 @@ import { screenshot } from '../../utils/screenshot.util.js';
 export async function postSnap(req, res) {
 	// called via `http://localhost:${PORT}/`
 	if (req.path === '/') {
-		const { url, size, quality } = req.query;
+		const { url, size, quality, download } = req.query;
 		if (url === undefined) {
 			throw new ValidationError(`Please call via ${domain}/?url=<domain>`);
 		}
@@ -20,6 +20,11 @@ export async function postSnap(req, res) {
 			quality,
 			size,
 		});
+
+		// test this
+		if (download === 'true') {
+			return res.download(captured.path);
+		}
 
 		return res.status(307).redirect(captured.path);
 	}
