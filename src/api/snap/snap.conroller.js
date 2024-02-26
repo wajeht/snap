@@ -22,10 +22,8 @@ export async function postSnap(req, res) {
 			size,
 		});
 
-		// test this
 		if (download === 'true') {
-			const image = path.resolve(path.join(process.cwd(), 'public', captured.path));
-			return res.download(image);
+			return res.download(path.resolve(path.join(process.cwd(), 'public', captured.path)));
 		}
 
 		return res.status(307).redirect(captured.path);
