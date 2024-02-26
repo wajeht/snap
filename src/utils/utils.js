@@ -2,7 +2,7 @@ import { app as appConfig } from '../config/app.config.js';
 
 export async function getIPAddress() {
 	try {
-		const response = await fetch('https://checkip.amazonaws.com');
+		const response = await fetch('https://ip.jaw.dev');
 		const data = await response.text();
 		return data.trim();
 	} catch (error) {
