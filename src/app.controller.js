@@ -1,5 +1,5 @@
 import { NotFoundError } from './app.error.js';
-import { app as appConfig } from './config/app.config.js';
+import { app as appConfig } from './config/config.js';
 
 export function healthCheckHandler(req, res, _next) {
 	return res.status(200).json({

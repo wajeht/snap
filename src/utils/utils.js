@@ -34,3 +34,5 @@ export function addHttpsIfNeeded(domain) {
 
 // prettier-ignore
 export const domain = appConfig.env !== 'production' ? `http://localhost:${appConfig.port}` : `${appConfig.domain}`;
+
+export * from './screenshot.util.js';

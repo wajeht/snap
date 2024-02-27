@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import path from 'path';
 
 import { api } from './api/api.js';
-import { rateLimitter } from './config/rate-limiter.config.js';
+import { rateLimitter } from './config/config.js';
 import { postSnap } from './api/snap/snap.conroller.js';
 import { catchAsyncErrors } from './app.middleware.js';
 import { notFoundHandler, errorHandler, healthCheckHandler } from './app.controller.js';

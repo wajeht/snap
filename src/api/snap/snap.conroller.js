@@ -1,7 +1,6 @@
 import path from 'path';
 import { ValidationError, UnimplementedFunctionError } from '../../app.error.js';
-import { domain, isValidURL, addHttpsIfNeeded } from '../../utils/utils.js';
-import { screenshot } from '../../utils/screenshot.util.js';
+import { domain, isValidURL, addHttpsIfNeeded, screenshot } from '../../utils/utils.js';
 
 export async function postSnap(req, res) {
 	// called via `http://localhost:${PORT}/`
