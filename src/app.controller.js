@@ -15,5 +15,10 @@ export function notFoundHandler(_req, _res, _next) {
 export function errorHandler(err, req, res, _next) {
 	const statusCode = err.statusCode ?? 500;
 	const message = appConfig.env !== 'production' ? err.stack : err.message;
-	return res.status(statusCode).json({ message });
+	return res.status(statusCode).json({
+		success: false,
+		originalUrl: req.originalUrl,
+		statusCode,
+		message,
+	});
 }
