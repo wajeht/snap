@@ -56,7 +56,7 @@ Capture a screenshot of a web page by specifying its URL.
 #### Example Request:
 
 ```bash
-$ curl http://localhost:PORT/?url=https://example.com
+$ curl https://snap.jaw.dev/?url=https://dogs.jaw.dev
 ```
 
 Replace `PORT` with the port number on which the server is running.
