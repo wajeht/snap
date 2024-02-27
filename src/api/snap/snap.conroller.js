@@ -30,11 +30,6 @@ export async function postSnap(req, res) {
 	}
 
 	throw new UnimplementedFunctionError();
-
-	// return res.status(200).json({
-	// 	message: 'ok',
-	// 	data: captured,
-	// });
 }
 
 export async function getSnap(_req, _res) {
