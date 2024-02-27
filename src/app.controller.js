@@ -3,6 +3,9 @@ import { app as appConfig } from './config/config.js';
 
 export function healthCheckHandler(req, res, _next) {
 	return res.status(200).json({
+		success: true,
+		originalUrl: req.originalUrl,
+		statusCode: 200,
 		message: 'ok',
 		uptime: process.uptime(),
 	});
