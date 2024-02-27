@@ -14,6 +14,8 @@ export async function postSnap(req, res) {
 			throw new ValidationError('invalid url');
 		}
 
+		// should also filter adult websites
+
 		// use job queue, this will hang requests
 		const captured = await screenshot({
 			url: addHttpsIfNeeded(url),
