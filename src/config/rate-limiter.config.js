@@ -2,7 +2,7 @@ import { rateLimit as rl } from 'express-rate-limit';
 import { app as appConfig } from '../config/app.config.js';
 import { getIPAddress } from '../utils/utils.js';
 
-async function skipOnMyIp(_req, _res) {
+export async function skipOnMyIp(_req, _res) {
 	const myIp = await getIPAddress();
 	const myIpWasConnected = myIp === appConfig.myIp;
 	if (myIpWasConnected) console.log(`my ip was connected: ${myIp}`);
