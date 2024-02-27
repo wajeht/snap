@@ -6,6 +6,7 @@ export async function postSnap(req, res) {
 	// called via `http://localhost:${PORT}/`
 	if (req.path === '/') {
 		const { url, size, quality, download } = req.query;
+
 		if (url === undefined) {
 			throw new ValidationError(`Please call via ${domain}/?url=<domain>`);
 		}
@@ -14,9 +15,9 @@ export async function postSnap(req, res) {
 			throw new ValidationError('invalid url');
 		}
 
-		// should also filter adult websites
+		// should filter adult websites
 
-		// use job queue, this will hang requests
+		// should use job queue, this will hang requests
 		const captured = await screenshot({
 			url: addHttpsIfNeeded(url),
 			quality,
