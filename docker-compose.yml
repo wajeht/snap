@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  snap:
+    container_name: snap
+    restart: unless-stopped
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - '${PORT}:${PORT}'
+    volumes:
+      - './:/usr/src/app'
+      - /usr/src/app/node_modules
+    networks:
+      - snap-network
+networks:
+  snap-network:
+    driver: bridge
