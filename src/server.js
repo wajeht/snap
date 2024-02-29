@@ -7,7 +7,7 @@ const server = app.listen(appConfig.port, () => {
 
 function gracefulShutdown() {
 	console.log('Received kill signal, shutting down gracefully.');
-	server.close(function () {
+	server.close(() => {
 		console.log('HTTP server closed.');
 		process.exit(0);
 	});
