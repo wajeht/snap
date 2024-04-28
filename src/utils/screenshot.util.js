@@ -39,7 +39,7 @@ export async function screenshot({ url, quality = 80, size = 800 }) {
 
 		// add a expires at
 		// create a job
-		// manaully delete them
+		// manually delete them
 
 		return {
 			path: `/img/${FILE_NAME}`,

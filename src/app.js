@@ -5,14 +5,14 @@ import helmet from 'helmet';
 import path from 'path';
 
 import { api } from './api/api.js';
-import { rateLimitter } from './config/config.js';
-import { postSnap } from './api/snap/snap.conroller.js';
+import { rateLimiter } from './config/config.js';
+import { postSnap } from './api/snap/snap.controller.js';
 import { catchAsyncErrors } from './app.middleware.js';
 import { notFoundHandler, errorHandler, healthCheckHandler } from './app.controller.js';
 
 const app = express();
 
-app.use(rateLimitter);
+app.use(rateLimiter);
 app.use(cors());
 app.use(helmet());
 app.use(compression());
