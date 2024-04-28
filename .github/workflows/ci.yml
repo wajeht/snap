@@ -89,7 +89,7 @@ jobs:
 
   deploy:
     needs: [test, lint, format]
-    name: Deploy to caprover
+    name: Deploy to production
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     environment:
@@ -121,7 +121,7 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_URL }}
 
-      - name: Deploy Image to CapRrover
+      - name: Deploy Image to Production
         uses: caprover/deploy-from-github@v1.1.2
         with:
           server: '${{ secrets.CAPROVER_SERVER }}'
