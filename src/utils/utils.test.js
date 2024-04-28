@@ -7,7 +7,7 @@ describe('isValidURL', () => {
 		'https://example.com',
 		'http://example.com/path/to/page?name=ferret&color=purple',
 		'http://192.168.1.1',
-		'http://192.168.1.1:8080',
+		'http://192.168.1.1:80',
 	];
 
 	const invalidURLs = [

@@ -6,7 +6,8 @@ on:
   pull_request:
 
 env:
-  PORT: 8080
+  PORT: 80
+  NODE_ENV: testing
 
 jobs:
   test:
@@ -33,7 +34,6 @@ jobs:
 
   lint:
     name: ESLint
-    needs: [test]
     runs-on: ubuntu-latest
 
     strategy:
@@ -55,7 +55,7 @@ jobs:
         run: npm run lint
 
   format:
-    needs: [lint]
+    needs: [lint, test]
     name: Prettier format
     runs-on: ubuntu-latest
 
@@ -88,7 +88,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
-    needs: [format]
+    needs: [test, lint, format]
     name: Deploy to caprover
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
